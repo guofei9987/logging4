@@ -1,14 +1,3 @@
-# logging4
-A tiny logging tool
-
-## install
-```bash
-$pip install logging4 
-```
-
-## usage
-
-```python
 import sys
 
 import logging4
@@ -23,13 +12,10 @@ logger.add_channel(filename=sys.stdout, level=logging4.ERROR, formatter=formatte
 logger.add_channel(filename='log2.txt', level=logging4.INFO)
 logger.del_channel(filename='log2.txt')
 
-```
-
-use logger:
-```python
+# use logger
 logger.debug('logger debug message')
 logger.info('logger info message')
 logger.warning('logger warning message')
 logger.error('logger error message')
 logger.critical('logger critical message')
-```
+
