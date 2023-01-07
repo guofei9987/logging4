@@ -23,7 +23,7 @@ class Logger(object):
         self.channel = dict()
         self.time_fmt = '%Y-%m-%d %H:%M:%S'
 
-    def add_channel(self, filename, level, formatter='{msg}'):
+    def add_channel(self, filename, level, formatter='[[msg]]'):
         self.channel[filename] = [level, formatter]
 
     def del_channel(self, filename):
@@ -35,12 +35,11 @@ class Logger(object):
     def __print(self, msg, level):
         for filename, (level_, formatter) in self.channel.items():
             if level >= level_:
-                text = formatter.format(
-                    time=datetime.datetime.now().strftime(self.time_fmt)
-                    , name=self.name
-                    , level_name=_level2name.get(level, "UNKNOWN")
-                    , msg=msg,
-                )
+                text = msg \
+                    .replace('[[time]]', datetime.datetime.now().strftime(self.time_fmt)) \
+                    .replace('[[name]]', self.name) \
+                    .replace('[[level_name]]', _level2name.get(level, "LEVEL_" + str(level))) \
+                    .replace('[[msg]]', msg)
                 if isinstance(filename, str):
                     with open(filename, "a") as f:
                         print(text, file=f, flush=True)

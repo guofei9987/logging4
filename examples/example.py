@@ -1,10 +1,9 @@
 import sys
-
 import logging4
 
 logger = logging4.Logger(name="MyLogger")
 
-formatter = '{time} - {name} - {level_name} - {msg}'
+formatter = '[[time]] - [[name]] - [[level_name]] - [[msg]]'
 
 # add/del channel
 logger.add_channel(filename='log.txt', level=logging4.WARNING)
@@ -18,4 +17,3 @@ logger.info('logger info message')
 logger.warning('logger warning message')
 logger.error('logger error message')
 logger.critical('logger critical message')
-
