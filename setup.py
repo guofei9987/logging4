@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import os
+import logging4
 
 this_directory = os.path.abspath(os.path.dirname(__file__))
 
@@ -17,7 +18,7 @@ def read_requirements(filename):
 
 setup(
     name='logging4',  # 包的名字，也是将来用户使用 pip install scikit-opt 来安装
-    version='0.0.1',  # 版本号，每次上传的版本号应当不一样，可以用类似 sko.__version__ 去自动指定
+    version=logging4.__version__,
     packages=find_packages(),
     python_requires='>=3.5',
     install_requires=[],  # 指定此包的依赖
